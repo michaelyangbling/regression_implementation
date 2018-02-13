@@ -16,13 +16,15 @@ train_X=getPolyMat(mat['X_trn'], which_power)
 test_X=getPolyMat(mat['X_tst'], which_power)
 
 def closeFormRegression(train, label):
-    return np.matmul(np.matmul( np.linalg.inv( np.matmul(train.transpose(), train) ),  train.transpose() ), label)
+    return np.matmul(np.matmul( np.linalg.inv( np.matmul(train.transpose(),
+                                                         train) ),  train.transpose() ), label)
 
 def GradDesc(train, label, learnRate, stopWhen, batchSize):# stochastic GD
     theta1=np.zeros((train.shape[1],1))
+    multiply=learnRate*2;
     while(True):
       batch=random.sample(range(0,label.shape[0]),batchSize)
-      theta2 = theta1 - learnRate * np.matmul(train[batch,:].transpose(), np.matmul(train[batch,:],
+      theta2 = theta1 - multiply * np.matmul(train[batch,:].transpose(), np.matmul(train[batch,:],
                                     theta1)- label[batch,:])
       if np.linalg.norm(theta2-theta1)<=stopWhen:
           return theta2
@@ -31,7 +33,7 @@ def GradDesc(train, label, learnRate, stopWhen, batchSize):# stochastic GD
 if which_method==0: # choose regression method
   per_batch_number = int(input("per-batch-number:  ")) #choose per-batch-number
   start=time.time()
-  parameters=GradDesc(train_X, mat['Y_trn'], 0.0000001, 0.0001, per_batch_number)
+  parameters=GradDesc(train_X, mat['Y_trn'], 0.00000005, 0.0001, per_batch_number)
   stop=time.time()
 else:
     start = time.time()

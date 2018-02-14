@@ -3,7 +3,9 @@ import numpy as np
 import random
 import time
 from sklearn.cross_validation import KFold  # sklearn This module will be removed in 0.20.", DeprecationWarning
-which_power=int(input("to which power:    "))
+print("please first input some commands")
+print("   ")
+which_power=int(input("poly to which power:    "))
 foldNum=int(input("how many folds for k-fold CV:    "))
 which_method=int(input("0: GradDesc, 1: closeform    "))
 mat = scipy.io.loadmat('/Users/yzh/Desktop/cour/supervised/HW1_Data/dataset1.mat')
@@ -83,17 +85,18 @@ else: # close form version
     parameters = RidgecloseForm(train_X, Y_trn, optAvoidOverFit)
     stop = time.time()
 
-print("follwing are results")
-print("hyper-parameter: ", optAvoidOverFit)
+print("follwing are outputs:")
+print("   ")
+print("best hyper-parameter:  ", optAvoidOverFit)
 print("theta:  ",parameters)
-print("train error by root-mean-square: ", get_error(train_X, parameters, Y_trn))#train error
-print("test error by root-mean-square: ", get_error(test_X, parameters, mat['Y_tst']))#test error
+print("train error by root-mean-square:    ", get_error(train_X, parameters, Y_trn))#train error
+print("test error by root-mean-square:    ", get_error(test_X, parameters, mat['Y_tst']))#test error
 print("How does the test error change as a function of hyper-parameter")
 for j in range(0,len(pararid)):  #print test errors for all hyperparameters
     if which_method==0:
       p=RidgeGradDesc(train_X, Y_trn, 0.00000005, 0.0001, per_batch_number, pararid[j])
-      print(pararid[j], get_error(test_X, p, mat['Y_tst'] ))
+      print(pararid[j], "   ",get_error(test_X, p, mat['Y_tst'] ))
     else:
       p = RidgecloseForm(train_X, Y_trn, pararid[j])
-      print(pararid[j], get_error(test_X, p, mat['Y_tst']))
+      print(pararid[j], "   ",get_error(test_X, p, mat['Y_tst']))
 

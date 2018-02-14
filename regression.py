@@ -44,3 +44,4 @@ print("time in seconds: ", stop-start)
 print("theta:  ",parameters)
 print("train error by root-mean-square: ", np.linalg.norm( np.matmul(train_X,parameters)-mat['Y_trn'] )/mat['Y_trn'].shape[0]**0.5)#train error
 print("test error by root-mean-square: ", np.linalg.norm( np.matmul(test_X,parameters)-mat['Y_tst'] )/mat['Y_tst'].shape[0]**0.5)#test error
+

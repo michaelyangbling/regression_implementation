@@ -1,0 +1,7 @@
+Regression.py: Consider n-degree polynomials, φ(·) =  1 x x2 · · · xn . Download the dataset on the course webpage and work with ‘dataset1’. Run the code on the training data to compute θ for n ∈ {2, 3, 5}. Evaluate the regression error on both training and the test data. Report θ, training error and test error for both implementation (closed-form vs gradient descent). What is the effect of the size of the mini-batch on the speed and testing error of the solution.
+
+
+
+RidgeStochasticRegression.py: Download the dataset on the course webpage and work with ‘dataset2’. Write a code in Python that applies Ridge regression to the dataset to compute θ for a given λ. Implement two cases:
+
+using a closed-form solution and using a stochastic gradient descent method with mini-batches of size m. Use K-fold cross validation on the training dataset to obtain the best regularization λ and apply the optimal θ to compute the regression error on test samples. Report the optimal λ, θ, test and training set errors for K ∈ {2,10,N}, where N is the number of samples. In all cases try n ∈ {2, 3, 5}. How does the test error change as a function of λ and n?
